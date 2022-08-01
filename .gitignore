@@ -366,3 +366,5 @@ fabric.properties
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm,django
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm,django
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,django
+
+app/db.sqlite3
