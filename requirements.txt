@@ -1,4 +1,10 @@
 asgiref==3.7.2
 Django==5.0
+flake8==6.1.0
+flake8-builtins==2.2.0
+flake8-print==5.0.0
+mccabe==0.7.0
+pycodestyle==2.11.1
+pyflakes==3.1.0
 sqlparse==0.4.4
 typing_extensions==4.9.0
