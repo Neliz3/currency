@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from currency_app.models import Rate, ContactUs
 import random
+from faker import Faker
 
 
 def generate_rate(number_of_records):
@@ -16,9 +17,9 @@ def generate_rate(number_of_records):
 def generate_contact(number_of_records):
     for i in range(number_of_records):
         ContactUs.objects.create(
-            email_from='',
-            subject='',
-            message=''
+            email_from=Faker().email(),
+            subject=Faker().name(),
+            message=Faker().text()
         )
 
 
