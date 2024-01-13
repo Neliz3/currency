@@ -17,9 +17,11 @@ Including another URLconf
 # from django.contrib import admin
 from django.urls import path
 
-from currency_app.views import hello_world
+from currency_app.views import hello_world, get_data, get_row
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('hello/', hello_world),
+    path('get_data/', get_data),
+    path('get_row/', get_row),
 ]
