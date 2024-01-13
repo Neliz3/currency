@@ -1,5 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, Http404
+from django.shortcuts import render, get_object_or_404
 from currency_app.models import Rate
 
 
@@ -21,10 +21,13 @@ def get_data(request):
     return render(request, "index.html", context=context)
 
 
-def get_row(request):
-    id_ = request.GET['id']
-    rate = Rate.objects.get(id=id_)
+def get_row(request, pk):
+    # try:
+    #     rate = Rate.objects.get(id=pk)
+    # except Rate.DoesNotExist:
+    #     raise Http404("Object does not exist.")
 
+    rate = get_object_or_404(Rate, pk=pk)
     context = {
         'model': 'Rate',
         'object': rate

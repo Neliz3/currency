@@ -23,5 +23,5 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('hello/', hello_world),
     path('get_data/', get_data),
-    path('get_row/', get_row),
+    path('get_row/<int:pk>/', get_row),
 ]
