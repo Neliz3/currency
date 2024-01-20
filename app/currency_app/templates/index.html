@@ -2,10 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Data</title>
+    <title>Home page</title>
 </head>
 <body>
-    <h1>Data from {{ model }}</h1>
-    <p>{{ data }}</p>
+<h1>Currency app</h1>
+{% for path in patterns %}
+    <p>
+        {{ path }}
+    </p>
+{#<div id="block">#}
+{#    <script>#}
+{#        let url = "https://localhost:8080/" + "{{ path }}";#}
+{#        let a = document.createElement('a');#}
+{#        a.href = url;#}
+{#        a.innerText = {{ path }};#}
+{#        document.getElementById('block').append(a);#}
+{#    </script>#}
+{#</div>#}
+{% endfor %}
+
 </body>
 </html>

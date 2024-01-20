@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rate</title>
+</head>
+<body>
+    <h1>Data from {{ model }}</h1>
+    {% if data %}
+        <p>{{ data }}</p>
+    {% elif rate %}
+        <p>{{ rate.id }}</p>
+        <p>{{ rate.currency }}</p>
+        <p>{{ rate.sale }}</p>
+        <p>{{ bank.buy }}</p>
+        <p>{{ rate.created }}</p>
+        <p>{{ rate.source }}</p>
+    {% endif %}
+</body>
+</html>

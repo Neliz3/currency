@@ -1,13 +1,23 @@
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from currency_app.models import Rate, Source
+from django.urls import get_resolver
 
 
-def hello_world(request):
-    return HttpResponse("Hello!")
+def start_page(request):
+    patterns = []
+    for p in get_resolver().url_patterns:
+        patterns.append(p.pattern)
+
+    context = {
+        'patterns': patterns,
+    }
+
+    return render(request, "index.html", context=context)
 
 
-def get_data(request):
+# GET id values from Rate model
+def get_rate(request):
     result = []
     queryset = Rate.objects.all().values_list('id', flat=True)
 
@@ -18,10 +28,11 @@ def get_data(request):
         'model': 'Rate',
         'data': result,
     }
-    return render(request, "index.html", context=context)
+    return render(request, "rate.html", context=context)
 
 
-def get_row(request, pk):
+# GET row from Rate model by ID
+def get_rate_by_id(request, pk):
     # try:
     #     rate = Rate.objects.get(id=pk)
     # except Rate.DoesNotExist:
@@ -30,11 +41,12 @@ def get_row(request, pk):
     rate = get_object_or_404(Rate, pk=pk)
     context = {
         'model': 'Rate',
-        'object': rate
+        'rate': rate
     }
-    return render(request, "get_row.html", context=context)
+    return render(request, "rate.html", context=context)
 
 
+# GET data from Source model
 def get_source(request):
 
     result = []
@@ -45,11 +57,12 @@ def get_source(request):
 
     context = {
         'model': 'Source',
-        'object': result
+        'data': result
     }
     return render(request, "banks.html", context=context)
 
 
+# GET row from Source model by ID
 def get_source_by_id(request, pk):
 
     source = get_object_or_404(Source, pk=pk)

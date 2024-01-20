@@ -17,13 +17,13 @@ Including another URLconf
 # from django.contrib import admin
 from django.urls import path
 
-from currency_app.views import hello_world, get_data, get_row, get_source, get_source_by_id
+from currency_app.views import start_page, get_rate, get_rate_by_id, get_source, get_source_by_id
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('hello/', hello_world),
-    path('get_data/', get_data),
-    path('get_row/<int:pk>/', get_row),
-    path('show_banks/', get_source),
-    path('show_banks/<int:pk>/', get_source_by_id),
+    path('', start_page),
+    path('currency/rate/list/', get_rate),
+    path('currency/rate/details/<int:pk>/', get_rate_by_id),
+    path('currency/source/list/', get_source),
+    path('currency/source/details/<int:pk>/', get_source_by_id),
 ]
