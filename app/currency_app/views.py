@@ -1,6 +1,6 @@
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-from currency_app.models import Rate
+from currency_app.models import Rate, Source
 
 
 def hello_world(request):
@@ -33,3 +33,29 @@ def get_row(request, pk):
         'object': rate
     }
     return render(request, "get_row.html", context=context)
+
+
+def get_source(request):
+
+    result = []
+    queryset = Source.objects.all().values_list('name', flat=True)
+
+    for q in queryset:
+        result.append(q)
+
+    context = {
+        'model': 'Source',
+        'object': result
+    }
+    return render(request, "banks.html", context=context)
+
+
+def get_source_by_id(request, pk):
+
+    source = get_object_or_404(Source, pk=pk)
+    context = {
+        'model': 'Source',
+        'bank': source
+    }
+
+    return render(request, "banks.html", context=context)
